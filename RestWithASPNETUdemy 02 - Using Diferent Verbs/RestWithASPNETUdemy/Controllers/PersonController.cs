@@ -32,13 +32,15 @@ namespace RestWithASPNETUdemy.Controllers
             return Ok(person);
         }
 
-        // POST api/values
+        //Mapeia as requisições POST para http://localhost:{porta}/api/person/
+        //O [FromBody] consome o Objeto JSON enviado no corpo da requisição
         [HttpPost]
-        public IActionResult Post([FromBody] Person person)
+        public IActionResult Post([FromBody]Person person)
         {
             if (person == null) return BadRequest();
-            return  new ObjectResult(_personService.Create(person));
+            return new ObjectResult(_personService.Create(person));
         }
+
 
         // PUT api/values/5
         [HttpPut("{id}")]
